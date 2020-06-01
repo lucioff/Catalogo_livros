@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Registrar novo.html</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css"> @import url("css/style.css"); </style>
+    </head>
+    <body>
+        <h2>Controle do Catalogo</h2>
+        <h3>Registrar novo Usuario</h3>
+        <form action="registrar_usuario.jsp" method="post">
+            Nome de Usuario: <input type="text" name="nome_usuario"> <br>
+            Senha: <input type="password" name="senha"> <br>
+            Id Usuário: <input type="text" name="id_usuario"> <br>
+            <input type="submit" value="Registrar">            
+        </form>
+            <h3>Registrar nova Editora</h3>
+        <form action="registrar_editora.jsp" method="post">
+            Nome da Editora: <input type="text" name="nome"> <br>
+            Cidade: <input type="text" name="cidade"> <br>
+            Id Editora: <input type="text" name="id_editora"> <br>
+            <input type="submit" value="Registrar"><br>
+        </form>
+            <h3>Registrar novo Livro</h3>        
+        <form action="registrar_livro.jsp" method="post">
+            Titulo do Livro: <input type="text" name="titulo"> <br>
+            Autor: <input type="text" name="autor"> <br>
+            Ano: <input type="text" name="ano"> <br>
+            Preço: <input type="text" name="preco"> <br>
+            Foto: <input type="text" name="foto"> <br>           
+            Id Livro: <input type="text" name="id_livro"> <br>           
+            Id Editora: <input type="text" name="id_editora"> <br>           
+            <input type="submit" value="Registrar">
+        </form>    
+            <h3>Atualizar Livro Existente</h3>    
+        <form action="atualizar_livro.jsp" method="post">
+            Titulo do Livro: <input type="text" name="titulo"> <br>
+            Autor: <input type="text" name="autor"> <br>
+            Ano: <input type="text" name="ano"> <br>
+            Preço: <input type="text" name="preco"> <br>
+            Foto: <input type="text" name="foto"> <br>           
+            Id Livro: <input type="text" name="id_livro"> <br> 
+            Id Editora: <input type="text" name="id_editora"> <br>           
+            <input type="submit" value="Atualizar">              
+        </form>
+        <br>
+            <a href="index.jsp">Pagina inicial</a>
+    </body>
+</html>
