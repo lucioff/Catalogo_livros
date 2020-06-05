@@ -10,6 +10,7 @@
     </head>
     <body>
         <%
+            HttpSession sessao = request.getSession();
             int id_livro = Integer.parseInt(request.getParameter("id_livro"));
             String titulo = request.getParameter("titulo");
             String autor = request.getParameter("autor");

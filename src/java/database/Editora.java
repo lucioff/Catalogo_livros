@@ -13,25 +13,6 @@ public class Editora {
         this.con = con;
     }    
 
-/*public boolean editoraExiste(String nome) {
-    int qtde;
-    try {
-        ps = con.prepareStatement("SELECT COUNT(*) as qtde FROM editora " + 
-                "WHERE nome = ?");
-        ps.setString(1, nome);
-        rs = ps.executeQuery();
-        rs.next();
-        qtde = rs.getInt("qtde");
-        if (qtde == 0)
-            return false;
-        else
-            return true;
-        
-    } catch (Exception e) {
-        e.printStackTrace();
-        return false;
-    }
-}*/
 public boolean inserir(String nome, String cidade, int id_editora) {
     try {
             ps = con.prepareStatement("INSERT INTO editora VALUES (?, ?, ?)");
@@ -46,5 +27,4 @@ public boolean inserir(String nome, String cidade, int id_editora) {
         return false; // erro ao inserir
     }    
 }
-
 }

@@ -10,18 +10,20 @@
     </head>
     <body>
         <%
-            int id_livro = Integer.parseInt(request.getParameter("id_livro"));
+            HttpSession sessao = request.getSession();
+            
             String titulo = request.getParameter("titulo");
             String autor = request.getParameter("autor");
             int ano = Integer.parseInt(request.getParameter("ano"));
             double preco = Integer.parseInt(request.getParameter("preco"));
             String foto = request.getParameter("foto");
             int id_editora = Integer.parseInt(request.getParameter("id_editora"));
+            int id_livro = Integer.parseInt(request.getParameter("id_livro"));
             
             conexao.conectar();
             livro.setConexao(conexao.getConexao());
             
-            if (livro.atualizar(id_livro, titulo, autor, ano, preco, foto, id_editora))
+            if (livro.atualizar(titulo, autor, ano, preco, foto, id_editora, id_livro))
                 out.println("<h2>Livro atualizado com sucesso</h2>");
                             
             else

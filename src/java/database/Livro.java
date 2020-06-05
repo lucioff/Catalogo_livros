@@ -14,36 +14,18 @@ public class Livro {
         this.con = con;
     }    
 
-/*public boolean livroExiste(String nome_usuario) {
-    int qtde;
-    try {
-        ps = con.prepareStatement("SELECT COUNT(*) as qtde FROM livro " + 
-                "WHERE titulo = ?");
-        ps.setString(1, titulo);
-        rs = ps.executeQuery();
-        rs.next();
-        qtde = rs.getInt("qtde");
-        if (qtde == 0)
-            return false;
-        else
-            return true;
-        
-    } catch (Exception e) {
-        e.printStackTrace();
-        return false;
-    }
-}*/
 public boolean inserir(int id_livro, String titulo, String autor, int ano, double preco, String foto, int id_editora) {
     try {
         
             ps = con.prepareStatement("INSERT INTO livro VALUES (?, ?, ?, ?, ?, ?, ?)");
-            ps.setInt(1, id_livro);
-            ps.setString(2, titulo);
-            ps.setString(3, autor);
-            ps.setInt(4, ano);
-            ps.setDouble(5, preco);
-            ps.setString(6, foto);
-            ps.setInt(7, id_editora);
+            
+            ps.setString(1, titulo);
+            ps.setString(2, autor);
+            ps.setInt(3, ano);
+            ps.setDouble(4, preco);
+            ps.setString(5, foto);
+            ps.setInt(6, id_editora);
+            ps.setInt(7, id_livro);
             ps.executeUpdate();
             return true; // livro foi registrado
         
@@ -52,23 +34,23 @@ public boolean inserir(int id_livro, String titulo, String autor, int ano, doubl
         return false; // erro ao inserir
     }    
 }
-public boolean atualizar(int id_livro, String titulo, String autor, int ano, double preco, String foto, int id_editora) {
+public boolean atualizar(String titulo, String autor, int ano, double preco, String foto, int id_editora, int id_livro) {
      try {
-        ps = con.prepareStatement("UPDATE livro" +
-                "SET id_livro = ?" +
-                "SET titulo = ?," +
-                "SET autor = ?," +
-                "SET ano = ?," +
-                "SET preco = ?," +
-                "SET foto = ?," +
-                "SET id_editora = ?,");
-        ps.setInt(1, id_livro);
-        ps.setString(2, titulo);
-        ps.setString(3, autor);
-        ps.setInt(4, ano);
-        ps.setDouble(5, preco);
-        ps.setString(6, foto);
-        ps.setInt(7, id_editora);
+        ps = con.prepareStatement("UPDATE livro " +
+                                "SET titulo = ?, " +
+                                "SET autor = ?, " +
+                                "SET ano = ?, " +
+                                "SET preco = ?, " +
+                                "SET foto = ?, " +
+                                "SET id_editora = ? " +
+                                "WHERE (id_livro = ?)");        
+        ps.setString(1, titulo);
+        ps.setString(2, autor);
+        ps.setInt(3, ano);
+        ps.setDouble(4, preco);
+        ps.setString(5, foto);
+        ps.setInt(6, id_editora);
+        ps.setInt(7, id_livro);
         ps.executeUpdate();
             
         return true;
@@ -90,7 +72,18 @@ public ResultSet listar(){
         return null;
     } 
 }
-
-   
+public ResultSet pesquisar(String titulo){
+    try {
+        ps = con.prepareStatement("SELECT * FROM livro WHERE titulo LIKE ?");
+        ps.setString(1, "%" + titulo + "%");
+        rs = ps.executeQuery();
+        return rs;
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    } 
+}
+  
 }
     

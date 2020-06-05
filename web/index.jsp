@@ -9,13 +9,28 @@
     </head>
     <body>
         <h2>Catalogo de Livros</h2>
-            <form action="autenticacao.jsp" method="post">
-            Usuário: <input type="text" name="nome_usuario"> <br>
-            Senha: <input type="password" name="senha"> <br>
+        <%            
+            HttpSession sessao = request.getSession();
+            if (sessao.isNew())
+            {
+        %>
+        <form action="autenticacao.jsp" method="post">
+            
+            Usuário: <br><input type="text" name="nome_usuario"><br>
+            Senha: <br><input type="password" name="senha"> <br><br>
             <input type="submit" value="Entrar">
         </form>
+        <br><a href="listar_livros.jsp">Listar Livros do Catalogo</a>
+        <% 
+        }else{            
+        %>
         <br>
-        <!--<a href="registrar_novo.html">TESTE Registrar novo</a><br>-->
-        <a href="listar_livros.jsp">Listar Livros do Catalogo</a>
+        <img src="imagens/bemvindo.jpg"><br>          
+        <a href="registrar_novo.html">Administração do catalogo</a><br>
+        <a href="listar_livros.jsp">Listar Livros do Catalogo</a><br> 
+        <a href="sair.jsp">Sair</a>
+        <%
+            }
+        %>
     </body>
 </html>

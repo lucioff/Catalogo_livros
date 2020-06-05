@@ -11,6 +11,7 @@
     <body>
         <h1>registrar usuario.jsp</h1>
         <%
+            HttpSession sessao = request.getSession();
             int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
             String nome_usuario = request.getParameter("nome_usuario");
             String senha = request.getParameter("senha");

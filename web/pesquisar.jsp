@@ -10,20 +10,22 @@
         <title>Listar_livro.jsp</title>
     </head>
     <body>
-        <h1>Livros cadastrados</h1>
+        <h1>Pesquisa de livros</h1>
         <%
             HttpSession sessao = request.getSession();
+          
+            String titulo = request.getParameter("titulo");
             ResultSet rs;
             
             conexao.conectar();
             livro.setConexao(conexao.getConexao());
-            rs = livro.listar();
-            
-            if (rs != null){
+            rs = livro.pesquisar(titulo);
+                       
+            if (titulo != null){
                 out.println("<table>");
                 out.println("<tr><th>Foto</th><th>Titulo</th><th>Autor</th><th>Ano</th><th>Preço</th><th>Editora</th><th>Código/ID</th></tr>");
                 while (rs.next())
-                {
+               {
                 out.println("<tr>");
                 out.println("<td>");
                 out.println("<img src='imagens/" + rs.getString("foto") + "'>");
@@ -47,6 +49,7 @@
             Informe o Título para pesquisa: <br><input type="text" name="pesquisa">            
             <input type="submit" value="Pesquisar"><br><br>
         </form>
-        <a href="index.jsp">Pagina Inicial</a><br>       
+        <a href="index.jsp">Pagina Inicial</a><br>
+        <a href="listar_livros.jsp">Voltar</a>
     </body>
 </html>

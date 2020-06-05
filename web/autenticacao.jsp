@@ -12,6 +12,7 @@
     <body>
         <h1>autenticacao.jsp</h1>
         <%
+            HttpSession sessao = request.getSession();
             String nome_usuario = request.getParameter("nome_usuario");
             String senha = request.getParameter("senha");
             
@@ -26,8 +27,7 @@
             }              
             else
                         
-            if (resultado == 1){
-                HttpSession sessao = request.getSession();
+            if (resultado == 1){               
                 sessao.setAttribute("nome_usuario", usuario.getUsuario()); 
                 out.println("<h2>Seja bem vindo</h2>");
                 out.println("<a href=\"registrar_novo.html\">Administração do catalogo</a><br>");
